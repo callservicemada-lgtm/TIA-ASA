@@ -24,7 +24,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background: var(--bg); color: white; min-height: 100vh; overflow-x: hidden; }
 
-        /* NEON STYLE HEADER */
         header { 
             position: sticky; top: 0; background: rgba(1, 4, 9, 0.95); 
             padding: 15px; z-index: 1000; border-bottom: 2px solid var(--manga);
@@ -38,9 +37,7 @@
             background: #000; color: #fff; border: 1px solid var(--manga); 
             outline: none; font-size: 1rem; transition: 0.3s;
         }
-        .search-bar:focus { box-shadow: 0 0 15px var(--manga); border-color: #fff; }
 
-        /* HORIZONTAL CATEGORIES */
         .cat-bar { display: flex; gap: 12px; overflow-x: auto; padding: 15px 0 5px 0; scrollbar-width: none; }
         .cat-bar::-webkit-scrollbar { display: none; }
         .cat-btn { 
@@ -50,14 +47,12 @@
         }
         .cat-btn.active { background: var(--manga); color: white; border-color: #fff; transform: scale(1.05); }
 
-        /* JOB FEED */
         .feed { padding: 15px; padding-bottom: 100px; display: grid; gap: 20px; }
         .job-card { 
             background: var(--card-bg); border: 1px solid #30363d; 
             border-radius: 25px; padding: 18px; display: flex; gap: 18px; 
             position: relative; overflow: hidden; transition: 0.3s;
         }
-        .job-card:active { transform: scale(0.98); }
         .urgent-tag { 
             position: absolute; top: 0; right: 0; background: var(--urgent); 
             color: white; padding: 5px 15px; font-size: 0.6rem; font-weight: 900; 
@@ -65,33 +60,28 @@
         }
         
         .job-img { width: 95px; height: 95px; border-radius: 20px; object-fit: cover; border: 2px solid #30363d; }
-        
         .job-body { flex: 1; min-width: 0; }
         .job-cat { font-size: 0.7rem; font-weight: 900; color: var(--manga); text-transform: uppercase; letter-spacing: 1px; }
         .job-title { font-size: 1.1rem; font-weight: 800; margin: 5px 0; color: #f0f6fc; line-height: 1.3; }
         .job-loc { font-size: 0.85rem; color: #8b949e; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
 
-        /* DOSSIER SECTION */
         .dossier-box { 
             background: rgba(0, 0, 0, 0.3); padding: 12px; border-radius: 15px; 
             margin: 10px 0; border: 1px dashed #30363d;
         }
         .dossier-title { font-size: 0.7rem; font-weight: 800; color: var(--orange); text-transform: uppercase; display: block; margin-bottom: 5px; }
-        .dossier-list { font-size: 0.75rem; color: #c9d1d9; padding-left: 18px; }
-        .dossier-list li { margin-bottom: 3px; }
+        .dossier-list { font-size: 0.75rem; color: #c9d1d9; padding-left: 18px; list-style: square; }
 
         .job-date { font-size: 0.75rem; color: #58a6ff; font-weight: 600; margin-top: 10px; }
 
-        /* BUTTONS */
         .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         .btn { 
             padding: 14px; border-radius: 15px; font-size: 0.8rem; 
             font-weight: 800; text-align: center; text-decoration: none; transition: 0.2s;
         }
-        .btn-call { background: var(--manga); color: white; box-shadow: 0 4px 15px rgba(0, 124, 240, 0.3); }
+        .btn-call { background: var(--manga); color: white; }
         .btn-link { background: #21262d; color: white; border: 1px solid #30363d; }
 
-        /* OVERLAYS (POPUP & LOCK) */
         .overlay { 
             position: fixed; inset: 0; display: none; 
             background: rgba(0,0,0,0.95); z-index: 9999; 
@@ -101,9 +91,9 @@
         .modal { 
             background: #0d1117; border: 2px solid var(--orange); 
             padding: 30px; border-radius: 35px; width: 100%; 
-            max-width: 400px; text-align: center; box-shadow: 0 0 30px rgba(255, 77, 0, 0.3);
+            max-width: 400px; text-align: center;
         }
-        .premium-box { background: rgba(255, 77, 0, 0.1); padding: 15px; border-radius: 20px; margin: 15px 0; text-align: left; font-size: 0.85rem; }
+        .premium-box { background: rgba(255, 77, 0, 0.1); padding: 12px; border-radius: 15px; margin: 10px 0; text-align: left; font-size: 0.85rem; }
         .input-code { 
             width: 100%; padding: 18px; margin: 20px 0; border-radius: 20px; 
             background: #000; color: #fff; border: 1px solid var(--manga); 
@@ -112,7 +102,7 @@
         .btn-main { 
             width: 100%; padding: 18px; border-radius: 50px; 
             background: var(--manga); color: white; border: none; 
-            font-family: 'Orbitron'; font-weight: 900; cursor: pointer; font-size: 1rem;
+            font-family: 'Orbitron'; font-weight: 900; cursor: pointer;
         }
     </style>
 </head>
@@ -120,17 +110,17 @@
 
 <div id="lockScreen" class="overlay">
     <div class="modal">
-        <h2 style="font-family:'Orbitron'; color:var(--orange);">TIME'S UP!</h2>
-        <p style="font-size: 0.9rem; margin: 15px 0; color: #8b949e; line-height: 1.5;">Tapitra ny 24h maimaim-poana. Mandoava 2.000 Ar (7 andro) amin'ireto:</p>
+        <h2 style="font-family:'Orbitron'; color:var(--orange);">TAPITRA NY FOTOANA!</h2>
+        <p style="font-size: 0.9rem; margin: 15px 0; color: #8b949e;">Tapitra ny 24h maimaim-poana. Mandoava 1.000 Ar hahazoana 4 ANDRO amin'ireto:</p>
         <div id="numList"></div>
         <input type="text" id="codeInput" class="input-code" placeholder="CODE VAOVAO">
-        <button onclick="checkCode()" class="btn-main" style="background:var(--orange)">ACTIVATE PREMIUM</button>
+        <button onclick="checkCode()" class="btn-main" style="background:var(--orange)">ACTIVATE (4 DAYS)</button>
     </div>
 </div>
 
 <div id="welcomePopup" class="overlay">
     <div class="modal" style="border-color: var(--manga)">
-        <h2 id="pTitle" style="color:var(--manga); font-family:'Orbitron';">TONGA SOA!</h2>
+        <h2 style="color:var(--manga); font-family:'Orbitron';">TONGA SOA!</h2>
         <p id="pMsg" style="margin: 20px 0; line-height: 1.6; font-size: 0.95rem;"></p>
         <div id="pTel" style="font-size: 1.5rem; font-weight: 900; color: var(--orange); margin-bottom: 20px;"></div>
         <button onclick="closePop()" class="btn-main">HIDITRA (24H GRATUIT)</button>
@@ -145,32 +135,29 @@
     <div class="cat-bar">
         <div class="cat-btn active" onclick="setCat('Rehetra', this)">Rehetra</div>
         <div class="cat-btn" onclick="setCat('Urgent', this)">🔥 Urgent</div>
+        <div class="cat-btn" onclick="setCat('Asa', this)">💼 Asa</div>
+        <div class="cat-btn" onclick="setCat('Concours', this)">🏆 Concours</div>
         <div class="cat-btn" onclick="setCat('BACC', this)">🎓 BACC</div>
         <div class="cat-btn" onclick="setCat('BEPC', this)">📜 BEPC</div>
-        <div class="cat-btn" onclick="setCat('Concours', this)">🏆 Concours</div>
     </div>
 </header>
 
 <div class="feed" id="feed"></div>
 
 <script>
-    const CONFIG = { code: "ASA2026", free_time: 86400000 }; // 24 Ora = 86400000ms
+    // 24h Free, avy eo 4 andro Premium (345600000ms)
+    const CONFIG = { code: "ASA2026", free_time: 86400000, premium_dur: 345600000 }; 
     let currentCat = "Rehetra";
 
     function init() {
-        if (typeof ALL_JOBS === 'undefined') {
-            document.getElementById('feed').innerHTML = "<p style='text-align:center;padding-top:100px;'>Mbola tsy hita ny data.js...</p>";
-            return;
-        }
+        if (typeof ALL_JOBS === 'undefined') return;
         
-        // Setup Numbers
         document.getElementById('numList').innerHTML = `
             <div class="premium-box">M-VOLA: <b style="float:right">${ALL_NUMS.telma}</b></div>
             <div class="premium-box">ORANGE: <b style="float:right">${ALL_NUMS.orange}</b></div>
             <div class="premium-box">AIRTEL: <b style="float:right">${ALL_NUMS.airtel}</b></div>
         `;
         
-        // Setup Welcome Popup
         document.getElementById('pMsg').innerText = ALL_LINKS.hafatra;
         document.getElementById('pTel').innerText = ALL_LINKS.finday;
 
@@ -188,14 +175,12 @@
                     <div class="job-cat">${job.cat}</div>
                     <div class="job-title">${job.title}</div>
                     <div class="job-loc">📍 ${job.loc}</div>
-                    
                     <div class="dossier-box">
                         <span class="dossier-title">📁 Dossier Ilaina:</span>
                         <ul class="dossier-list">
                             ${job.dossier.map(d => `<li>${d}</li>`).join('')}
                         </ul>
                     </div>
-
                     <div class="job-date">📅 Hatramin'ny: ${job.date}</div>
                     <div class="btn-group">
                         <a href="tel:${job.tel}" class="btn btn-call">HIANTSO</a>
@@ -222,13 +207,6 @@
         filter();
     }
 
-    function checkCode() {
-        if(document.getElementById('codeInput').value.trim() === CONFIG.code) {
-            localStorage.setItem('tia_premium', Date.now() + 604800000); // +7 andro
-            location.reload();
-        } else { alert("Code diso!"); }
-    }
-
     function checkStatus() {
         const now = Date.now();
         const install = localStorage.getItem('tia_start');
@@ -237,12 +215,25 @@
         if (!install) {
             localStorage.setItem('tia_start', now);
             document.getElementById('welcomePopup').style.display = 'flex';
-        } else if (now - install > CONFIG.free_time && (!premium || now > premium)) {
-            document.getElementById('lockScreen').style.display = 'flex';
         } else {
-            // Raha mbola ao anaty 24h na efa premium dia mipoitra foana ny welcome popup raha tiana (na akatona mivantana)
-            document.getElementById('welcomePopup').style.display = 'flex';
+            // Jereo raha lany ny 24h maimaim-poana
+            const isFreeExpired = (now - install) > CONFIG.free_time;
+            // Jereo raha mbola manana Premium manan-kery
+            const isPremiumActive = premium && (now < parseInt(premium));
+
+            if (isFreeExpired && !isPremiumActive) {
+                document.getElementById('lockScreen').style.display = 'flex';
+            }
         }
+    }
+
+    function checkCode() {
+        if(document.getElementById('codeInput').value.trim() === CONFIG.code) {
+            // Rehefa ampidirina ny code dia manomboka izao + 4 andro
+            localStorage.setItem('tia_premium', Date.now() + CONFIG.premium_dur); 
+            alert("Misaotra! Misokatra 4 andro ny TIA-ASA-nao.");
+            location.reload();
+        } else { alert("Code diso!"); }
     }
 
     function closePop() { document.getElementById('welcomePopup').style.display = 'none'; }
